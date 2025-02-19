@@ -31,7 +31,7 @@ app.use(
 );
 
 // ✅ MongoDB Connection (Single Connection)
-const mongoURI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/reviewDB";
+const mongoURI = 'mongodb+srv://goofyjock:spxr1UKkEq2DYUH2@cluster0.crmb2.mongodb.net/';
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
