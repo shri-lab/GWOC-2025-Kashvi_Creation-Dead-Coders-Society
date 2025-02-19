@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Community Reviews</title>
+    <link rel="stylesheet" href="/style.css">
+   
+   
+   
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+ 
+   <style>
+        * {
+         
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        ::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #444; 
+}
+
+        body {
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 900px;
+            
+            background: white;
+            border:2px solid #333;
+            /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            font-family: "Roboto";
+
+            background: #333;
+            color: white;
+            text-align: center;
+            
+            padding: 15px;
+            font-size: 1.5rem;
+            font-weight: 100;
+        }
+        .content {
+            font-family: "Inter", sans-serif;
+            display: flex;
+            flex-direction: row;
+            padding: 20px;
+        }
+        .form-section{
+            margin-top: 15%;
+        }
+        .reviews-section, .form-section {
+           
+            width: 50%;
+            padding: 15px;
+        }
+        .reviews-section {
+            border-right: 2px solid #ddd;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+        .review {
+            background: #f9f9f9;
+            padding: 12px;
+            margin-bottom: 10px;
+            
+            font-weight: 400;
+            font-family:"Roboto";
+            border-radius: 8px;
+            border-left: 4px solid #333;
+        }
+        .review h3 {
+            color: #222;
+            font-weight: 500;
+            
+            font-family:"Roboto";
+        }
+        .review p {
+            color: #555;
+            font-size: 14px;
+        }
+        form{
+            /* background: url('/images/review-bg.p'); */
+        }
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+            border: 2px solid #333;
+            border-radius: 6px;
+            /* border: 1px solid #ddd; */
+            z-index: 2;
+            background:rgba(0, 0, 0, 0);
+        }
+        form textarea {
+            resize: none;
+            z-index: 2;
+            height: 100px;
+        }
+         button {
+            border: 2px solid #333;
+            color:#333;
+            /* background-color: #fff; */
+            text-transform: capitalize;
+            letter-spacing: 2px;
+            z-index: 2;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        form button:hover {
+            background: #333;
+            color:#fff;
+        }
+        #bg-img{
+            position: absolute;
+            left:48%;
+            top:30%;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">COMMUNITY REVIEWS</div>
+        <div class="content">
+            <div class="reviews-section">
+                <% reviews.forEach(review => { %>
+                    <div class="review">
+                        <h3><%= review.username %></h3>
+                        <p><%= review.content %></p>
+                    </div>
+                <% }) %>
+            </div>
+            <div class="form-section">
+                <!-- <img src="/images/review-bg.png" alt="" id = "bg-img"> -->
+                <form action="/submit-review" method="POST">
+                 
+                    <input type="text" name="username" placeholder="Your Name" required>
+                    <textarea name="content" placeholder="Write your review..." required></textarea>
+                    <button type="submit">SUBMIT REVIEW</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       
+    </script>
+</body>
+</html>

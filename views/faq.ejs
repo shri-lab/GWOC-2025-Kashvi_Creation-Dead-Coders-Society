@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+    <style>
+        h1{
+            font-family:"Roboto";
+            font-weight:300;
+            text-transform: uppercase;
+        }
+        *{
+            font-family: "Roboto";
+            font-weight:400;
+        }
+        #mainBtn{
+            background:rgba(0,0,0,0);
+            color:#333;
+            position:absolute;
+            top:1vh;
+            font-family: "Roboto";
+            font-weight:200;
+            left:1vh;
+            border:1px solid #333;
+            border-radius: 10px;
+
+        }
+        #mainBtn:hover{
+            background:#333;
+            color:#fff;
+        }
+    </style>
+    <h1 id = "MainHead">Frequently Asked Questions</h1>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question">What types of fabrics does Kashvi Creation use? ⬇</button>
+            <p class="faq-answer">Kashvi Creation specializes in high-quality cotton, silk, georgette, chiffon, and other premium fabrics that ensure both comfort and durability.</p>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question">Does Kashvi Creation offer international shipping? ⬇</button>
+            <p class="faq-answer">Yes, Kashvi Creation offers international shipping to multiple countries. Customers can check shipping rates and estimated delivery times at checkout.</p>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How can I place bulk orders? ⬇</button>
+            <p class="faq-answer">For bulk or wholesale orders, please reach out to our sales team via email at <strong>sales@kashvicreation.com</strong> or call us at <strong>+91-XXXXXXXXXX</strong>.</p>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What payment methods are accepted? ⬇</button>
+            <p class="faq-answer">We accept all major credit and debit cards, net banking, UPI payments, and secure online wallets for a smooth transaction experience.</p>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What is the return policy? ⬇</button>
+            <p class="faq-answer">Kashvi Creation offers a hassle-free 7-day return policy on eligible products. Customers can initiate a return by visiting the "Returns & Exchanges" section on our website.</p>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How do I track my order? ⬇</button>
+            <p class="faq-answer">Once your order has been shipped, you will receive a tracking number via email. You can use this number to track your order in real-time on our website.</p>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Do you offer custom designs? ⬇</button>
+            <p class="faq-answer">Yes! Kashvi Creation provides customization services for special requests. Please contact our design team to discuss your requirements.</p>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Can I modify or cancel my order after placing it? ⬇</button>
+            <p class="faq-answer">Orders can only be modified or canceled within 24 hours of placing them. Please contact our customer support team immediately for assistance.</p>
+        </div>
+    </div>
+
+    <script>
+          answer.style.display = (answer.style.display === 'none') ? 'block' : 'none';
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+    </script>
+    <a href="/" class="btn" id = "mainBtn">Home</a>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Zoom</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #000;
+        }
+
+        .container img {
+            
+            
+            transition: transform 0.1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="imageContainer">
+        <img src="E:\Projects\GWOC-Kashvi Creation\Final_1\public\images\Seasonal.png" alt="Hover to Zoom" id="image">
+    </div>
+
+    <script>
+        const container = document.getElementById("imageContainer");
+        const img = document.getElementById("image");
+
+        container.addEventListener("mousemove", (event) => {
+            const rect = container.getBoundingClientRect();
+            const x = event.clientX - rect.left; 
+            const y = event.clientY - rect.top;  
+
+            
+            const percentX = (x / rect.width) * 100;
+            const percentY = (y / rect.height) * 100;
+
+            
+            img.style.transformOrigin = `${percentX}% ${percentY}%`;
+            img.style.transform = "scale(2)"; 
+        });
+
+        container.addEventListener("mouseleave", () => {
+            img.style.transform = "scale(1)"; 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+ 
+    <title>Video Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('/images/MainBodyBg.jpg');
+        }
+
+        .video-container {
+            z-index: 0;
+            position: relative;
+            width: 90vh;
+            max-width: 30%;
+            height: 65%;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+            margin-left:30%;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Fixed Overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1;
+        }
+
+        /* Centered Button */
+        .shop-now {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            width:80%;
+            background:rgba(0,0,0,0);
+            border:1px solid #c2a356;
+            display: none;
+            transition: opacity 0.3s;
+            z-index: 2;
+        }
+        .shop-now:hover{
+            background:#c2a356;
+        }
+
+        .video-container:hover .shop-now {
+            display: block;
+        }
+
+        /* Navigation Dots */
+        .dots-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #c2a356;
+        }
+
+        .mainText{
+            width:30%;
+            margin-left:-45%;
+            text-align: left;
+            position: absolute;
+            font-family: "Roboto";
+
+
+        }
+        .mainText h1{
+            font-weight:200;
+            font-size: 2.5rem;
+
+        }
+        .mainText p {
+            font-size: 1.5rem;
+            font-weight: 100;
+        }
+        @media (max-width: 1000px) {
+
+            .video-container{
+                
+                max-width: 80%;
+                height:90%;
+                margin-left:0%;
+            }
+            .overlay{
+                display: block;
+            }
+            .shop-now{
+                display: block;
+            }
+            .mainText{
+                display:none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container" id="videoContainer">
+        <video id="videoPlayer" autoplay loop muted>
+            <source src="/images/01.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+       <a href="/catalogue" target="_top"> <button class="shop-now">Shop Now</button></a>
+        <div class="dots-container" id="dotsContainer"></div>
+    </div>
+
+    <script>
+        const videoPlayer = document.getElementById("videoPlayer");
+        const dotsContainer = document.getElementById("dotsContainer");
+        const videoSources = [
+            "/images/01.mp4",
+            "/images/02.mp4",
+            "/images/03.mp4",
+            "/images/04.mp4",
+            "/images/05.mp4",
+            "/images/06.mp4"
+        ];
+
+        let currentVideoIndex = 0;
+
+        function changeVideo(index) {
+            currentVideoIndex = index;
+            videoPlayer.src = videoSources[currentVideoIndex];
+            videoPlayer.play();
+            updateDots();
+        }
+
+        function updateDots() {
+            document.querySelectorAll(".dot").forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentVideoIndex);
+            });
+        }
+
+        function createDots() {
+            videoSources.forEach((_, index) => {
+                const dot = document.createElement("div");
+                dot.classList.add("dot");
+                if (index === 0) dot.classList.add("active");
+                dot.addEventListener("click", () => changeVideo(index));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        createDots();
+        setInterval(() => changeVideo((currentVideoIndex + 1) % videoSources.length), 5000);
+    </script>
+
+    <div class="mainText">
+        <img src="" alt="">
+        <h1>OUR COLLECTION</h1>
+        <p>Our Collection - Experience the pinnacle of Indian craftsmanship with Kashvi Creation's luxurious collection.</p>
+    </div>
+
+</body>
+</html>

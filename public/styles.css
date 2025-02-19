@@ -1,0 +1,76 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 25px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Forms */
+form {
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Reviews */
+.review-container, .owner-container {
+    width: 70%;
+    margin: auto;
+}
+
+.review, .owner-review {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.approve {
+    background: #28a745;
+    color: white;
+}
+
+.reject {
+    background: #dc3545;
+    color: white;
+}

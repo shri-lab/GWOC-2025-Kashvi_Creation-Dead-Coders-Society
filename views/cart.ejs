@@ -1,0 +1,392 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traditional Shopping Cart</title>
+  
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            /* font-family: 'Marcellus', serif; */
+            background: #f4f2e5; /* Soft beige background */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #4a4a4a;
+            
+            
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #ece9e2; /* Soft white with a warm tint */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e0d6c2; /* Traditional border */
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+        }
+        .cart-container h2{
+            font-family: "Roboto";
+            font-weight:300;
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            
+            font-size: 2.5rem;
+            color: #060505; /* Muted brown */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #e0d6c2; /* Traditional border color 
+
+            text-align: center;
+        }
+        #rows{
+            height:300vh
+        }
+        td{
+            font-family: "Roboto";
+            font-size:200;
+        }
+
+      */  th {
+            background: #171313;
+            color: white;
+            font-weight: 500;
+            font-family: "Roboto";
+            font-weight:200;
+        }/*
+
+        td img {
+            width: 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height:40%;
+            width:50%;
+        } */
+        table {
+    width: 100%; /* Make the table span the full container width */
+    border-collapse: collapse; /* Remove extra space between borders */
+}
+
+th, td {
+    padding: 12px; /* Add spacing inside cells */
+    text-align: center; /* Keep content centered */
+    border-bottom: 1px solid #ddd; /* Add subtle row separation */
+}
+
+tr {
+    height: 80px; /* Set an optimal row height */
+}
+
+img {
+    width: 80px; /* Adjust image size */
+    height: 80px;
+    object-fit: cover; /* Ensure images fit well without distortion */
+    border-radius: 5px; /* Slight rounding for aesthetics */
+}
+
+
+        td img:hover {
+            transform: scale(1.1);
+        }
+
+        .remove-item {
+            background: #161212; /* Muted red */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: #5d2a2a; /* Darker muted red */
+        }
+
+        .cart-summary {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #6b4f4f; /* Muted brown */
+        }
+
+        #checkout-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #0c0a0a; /* Muted brown */
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        #checkout-btn:hover {
+            background: #772626; /* Darker muted brown */
+            transform: translateY(-2px);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #0c0a0a; /* Muted brown */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #8a4a4a; /* Darker muted brown */
+            transform: translateY(-2px);
+        }
+
+        /* Traditional Patterns */
+        .cart-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            z-index: -1;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Ornamental Border */
+        .cart-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid #e0d6c2; /* Traditional border */
+            border-radius: 15px;
+            pointer-events: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cart-container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            td img {
+                width: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+        <% if (cart.length === 0) { %>
+            <p>Your cart is empty.</p>
+        <% } else { %>
+            <table border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Design No.</th>
+                    <th>Action</th>
+                </tr>
+                <% cart.forEach(product => { %>
+                    <tr id = #rows>
+                    
+
+                        <td><img src='<%= product.image %>' width="50"></td>
+                        <td><%= product.name %></td>
+                        <td><%= product.category %></td>
+                        <td><%= product.price %></td>
+                        <td>
+                            <form action="/cart/remove/<%= product._id %>" method="POST">
+                                <button type="submit" class="cross-button"></button>
+                            </form>
+                            <style>
+                                .cross-button {
+                                    width: 25px;
+                                    height: 25px;
+                                    background-color: black;
+                                    border: none;
+                                    position: relative;
+                                    cursor: pointer;
+                                }
+                        
+                                .cross-button::before,
+                                .cross-button::after {
+                                    content: "";
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    width: 40%;
+                                    height: 2px;
+                                    background-color: white;
+                                    transform: translate(-50%, -50%) rotate(45deg);
+                                }
+                        
+                                .cross-button::after {
+                                    transform: translate(-50%, -50%) rotate(-45deg);
+                                }
+                        
+                                .cross-button:hover {
+                                    background-color: #772626;
+                                }
+                            </style>
+                        </td>
+                    </tr>
+                <% }) %>
+            </table>
+        <% } %>
+        <div class="cart-summary">
+            <button id="checkout-btn">Proceed to Checkout</button>
+        </div>
+        <a href="/catalogue" class="back-button">&larr; Back</a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    document.getElementById("checkout-btn").addEventListener("click", async () => {
+        if (!window.jspdf) {
+            console.error("jsPDF not loaded!");
+            return;
+        }
+        
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // 🎨 Set Background Color (Soft Beige)
+        doc.setFillColor(250, 243, 224);
+        doc.rect(0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight(), 'F');
+
+        // 🏮 Traditional Header
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(22);
+        doc.setTextColor(107, 79, 79);
+        doc.text("Kashvi Creations", 105, 25, { align: "center" });
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.setTextColor(107, 79, 79);
+        doc.text("Shop No. 113, Millennium Textile Market-2", 105, 35, { align: "center" });
+        doc.text("Ring Road, Surat-395002", 105, 42, { align: "center" });
+        doc.text("Phone: +91 9376421333", 105, 49, { align: "center" });
+
+        // 🖋️ Ornamental Line
+        doc.setDrawColor(168, 106, 106);
+        doc.setLineWidth(0.5);
+        doc.line(20, 55, 190, 55);
+
+        // 🧾 Invoice Details
+        doc.setFontSize(14);
+        doc.text(`Invoice No: ${Math.floor(Math.random() * 1000000)}`, 20, 65);
+        doc.text(`Date: ${new Date().toLocaleDateString()}`, 140, 65);
+
+        doc.line(20, 70, 190, 70);
+
+        let yPosition = 80; // Starting position for table
+
+        // 🛍️ Table Header
+        doc.setFont("helvetica", "bold");
+        doc.text("Item", 20, yPosition);
+        doc.text("Category", 90, yPosition);
+        doc.text("Design No.", 140, yPosition);
+        yPosition += 10;
+
+        doc.setFont("helvetica", "normal");
+
+        // Retrieve cart data from server-side
+        const cart = <%= JSON.stringify(cart) %>;
+
+        for (let i = 0; i < cart.length; i++) {
+            const item = cart[i];
+
+            try {
+                const imgData = await getBase64Image(item.image);
+                doc.addImage(imgData, "JPEG", 20, yPosition, 20, 20);
+            } catch (error) {
+                console.error("Image load error:", error);
+            }
+
+            doc.text(item.name, 50, yPosition + 10);
+            doc.text(item.category, 90, yPosition + 10);
+            doc.text(item.price.toString(), 140, yPosition + 10);
+            yPosition += 30;
+        }
+
+        // 🏷️ Total Items
+        doc.setFont("helvetica", "bold");
+        doc.text(`Total Items: ${cart.length}`, 20, yPosition + 15);
+
+        // 🏮 Footer Message
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(12);
+        doc.text("Thank you for shopping with us!", 105, yPosition + 30, { align: "center" });
+
+        // 📥 Save the PDF
+        doc.save("Invoice.pdf");
+    });
+
+    // 📷 Convert Image URL to Base64
+    function getBase64Image(imgUrl) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.onload = function () {
+                const canvas = document.createElement("canvas");
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+                resolve(canvas.toDataURL("image/jpeg"));
+            };
+            img.onerror = () => reject(new Error("Failed to load image"));
+            img.src = imgUrl;
+        });
+    }
+</script>
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Upload Product</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+
+    <style>
+      
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+
+h1 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
+    margin-top: 10px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input[type="file"] {
+    border: none;
+}
+
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff;
+    color: #333;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    border:2px solid #333;
+}
+
+button:hover {
+    color:#fff;
+    background:#333;
+}
+
+#uploadbtn {
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff;
+    color: #333;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    border:2px solid #333;
+}
+
+    </style>
+    <div class="container">
+        <h1>Upload a New Product</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label>Name: <input type="text" name="name" required></label>
+            <label>Details: <textarea name="details" required></textarea></label>
+            <label>Category:
+                <select name="category">
+                    <option value="category 1">Category 1</option>
+                    <option value="category 2">Category 2</option>
+                    <option value="category 3">Category 3</option>
+                    <option value="category 4">Category 4</option>
+                </select>
+            </label>
+            <label>Design No: <input type="number" name="price" required></label>
+            <label id = "uploadBtn">Image: <input type="file" name="image" required></label>
+            <button type="submit" >Upload</button>
+        </form>
+    </div>
+</body>
+</html>

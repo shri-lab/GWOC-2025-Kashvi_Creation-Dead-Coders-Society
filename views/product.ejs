@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= product.name %></title>
+ 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">  
+    <style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        background-color: #f8f5f0;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #2c2c2c;
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    .product-container {
+        max-width: 1100px;
+        margin: 50px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .product-image {
+        width: 50%; 
+        
+        max-width: 50%;
+         height: auto;
+        /* object-fit: cover; */
+        border-radius: 12px;
+    }
+
+    .product-details {
+        flex: 1;
+    }
+
+    .product-details h1 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .product-details p {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .buttons-container {
+        margin-top: 25px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 14px 28px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-right: 10px;
+    }
+
+    .btn-cart {
+        background-color:rgba(0,0,0,0);
+        color: #333;
+        border:1px solid #333;
+        border-radius:10px;
+        font-family:"Roboto";
+        font-weight:300;
+    }
+
+    .btn-cart:hover {
+        background-color: #333;
+        cursor: pointer;
+        color:#fff;
+    }
+
+    .btn-secondary {
+        margin-top: 4px;
+        background-color:rgba(0,0,0,0);
+        color: #333;
+        border:1px solid #333;
+        border-radius:10px;
+        font-family:"Roboto";
+        font-weight:300;
+    }
+
+    .btn-secondary:hover {
+        background-color: #333;
+        cursor: pointer;
+        color:#fff;
+    }
+
+    @media screen and (max-width: 768px) {
+        .product-container {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        .product-image {
+            width: 100%;
+        }
+    }
+
+   
+
+    header{
+        font-family:"Roboto";
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+    header a{
+        text-decoration: none;
+        color:inherit;
+        
+    }
+  </style>
+</head>
+<body>
+<style>
+
+.product-container {
+      
+        
+           overflow: hidden;
+        }
+
+        .product-container #image {
+           overflow: hidden;
+           
+            object-fit: cover;
+            
+            transition: transform 0.1s ease-out;
+        }
+</style>
+    <script>
+
+        // zooming script 
+        window.onload = function() {
+    const container = document.querySelector(".product-container"); 
+    const img = document.getElementById("image");
+
+    if (!container || !img) {
+        console.error("Zoom script failed: Container or image not found!");
+        return;
+    }
+
+    container.addEventListener("mousemove", (event) => {
+        const rect = container.getBoundingClientRect();
+        const x = event.clientX - rect.left; 
+        const y = event.clientY - rect.top;  
+
+        const percentX = (x / rect.width) * 100;
+        const percentY = (y / rect.height) * 100;
+
+        img.style.transformOrigin = `${percentX}% ${percentY}%`;
+        img.style.transform = "scale(2)"; 
+    });
+
+    container.addEventListener("mouseleave", () => {
+        img.style.transform = "scale(1)"; 
+    });
+};
+
+    </script>
+  <header> <a href="/"> Kashvi Creations</a></header>
+    <div class="product-container" id = "product-container">
+        <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image" id = "image">
+        <div class="product-details">
+            <h1><%= product.name %></h1>
+            <p><strong>Category:</strong>  <%= product.category %></p>
+            <p><strong>Details:</strong> <%= product.details %></p>
+            <p><strong>Price: </strong><%= product.price %></p>
+            <div class="buttons-container">
+                <form action="/cart/add/<%= product._id %>" method="POST">
+                    <button type="submit" class="button btn-cart">Add to Cart</button>
+                </form>
+            
+                <a href="/cart" class="button btn-secondary">View Cart</a>
+                <a href="/catalogue" class="button btn-secondary">Catalog</a>  
+            </div>
+        </div>
+    </div>
+
+  
+</body>
+</html>

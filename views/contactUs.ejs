@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+<body>
+<script>
+  
+   
+        document.documentElement.setAttribute('data-theme', 'dark');
+   
+
+
+
+
+</script>
+    
+
+<div class="contact-container">
+    <div class="left-col">
+     
+    </div>
+    <div class="right-col">
+      <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <!-- <div class="slider round"></div> -->
+    </label>
+    <!-- <div class="description">Dark Mode</div> -->
+  </div>
+      
+      <h1>Contact us</h1>
+      <p>Planning to Engage with us in business soon?</p>
+      
+      <form id="contact-form" method="post">
+        <label for="name">Follow us on: </label>
+        <div class="social-icons">
+            <a href="#"><img src="/images/facebook.png" alt="Facebook">  Facebook</a>
+            <a href="#"><img src="/images/instagram.png" alt="Instagram">Instagram</a>
+            <a href="#"><img src="/images/pinterest.png" alt="Pinterest">Pinterest</a>
+            <a href="#"><img src="/images/youtube.png" alt="YouTube">YouTube</a>
+        </div>
+        <br><br><br>
+
+   <div class="email">
+    <label for="email">Email us on:</label>
+    
+    <a href="#">Email: Kashvicreation10@gmail.com</a>
+    <br>
+   <div class="call">
+    <label for="message">Call Us on:</label>
+    <a href="#">Vimal jain: +91 9376421333</a>
+    <a href="#">Manoj kejriwal: +91 7290909696</a>
+</div>
+   </div>
+
+   <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4693.997828114523!2d72.84426730227328!3d21.17943295657587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f30c2a28475%3A0xad5f81ba586f9f2c!2sKashvi%20Creation!5e1!3m2!1sen!2sin!4v1739542133903!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   </div>
+
+       
+    
+  </form>
+  <div id="error"></div>
+  <div id="success-msg"></div>
+    </div>
+  </div>
+  <style>
+    body{
+        overflow: hidden;
+    }
+        .social-icons a {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin-bottom: 8px;
+    margin-left:-20%;
+    color: #FCFDFD;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: none; 
+    text-decoration: dashed;
+}
+.email a{
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 2%;
+    /* margin-left:-20%; */
+    color: #FCFDFD;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: none; 
+    text-decoration: dashed;
+}
+.email{
+    display: flex;
+      justify-content: center;
+      flex-direction: column;
+      /* margin-left:vh; */
+      gap: 10px; 
+      width:70%;
+      height:30vh;
+      margin-top: -55%; 
+      margin-left: 30%;
+
+   
+}
+.social-icons a:hover{
+    opacity: 0.5;
+}
+.map{
+   
+    width:90%;
+    margin-left: 15%;
+}
+iframe{
+    border-radius: 20px;
+
+}
+.social-icons img {
+    width: 20px;
+    height: 20px;
+}
+          .social-icons {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      /* margin-left:vh; */
+      gap: 10px; 
+      width:25%;
+      margin-top: 10px; 
+      border-right: dashed 2px #fff;
+  }
+  
+    :root {
+  --primary-color: #287c67;
+  --secondary-color: #818386;
+  --bg-color: #FCFDFD;
+  --button-color: #3B3636;
+  --h1-color: #3F444C;
+}
+
+[data-theme="dark"] {
+  --primary-color: #FCFDFD;
+  --secondary-color: #818386;
+  --bg-color: linear-gradient(#000000,#0e2c24);
+  --button-color: #FCFDFD;
+  --h1-color: #FCFDFD;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-color);
+}
+
+.left-col {
+  width: 45vw;
+  height: 100%;
+  background-image: url("/images/contact-image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media (max-width: 768px) {
+    .left-col {
+ display: none;
+}
+.map{
+    margin-left: 0%;
+}
+
+}
+
+
+
+.right-col {
+  background: var(--bg-color);
+  width: 50vw;
+  height: 100vh;
+  padding: 5rem 3.5rem;
+}
+
+h1, label, button, .description {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+}
+
+h1 {
+  color:var(--h1-color);
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+  font-weight: 300;
+}
+
+p {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  letter-spacing: 0.01rem;
+  width: 40vw;
+  margin: 0.25rem 0;
+}
+
+label, .description {
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  font-size: 0.625rem;
+}
+
+form {
+  width: 31.25rem;
+  position: relative;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+input, textarea, label {
+  width: 40vw;
+  display: block;
+}
+
+p, placeholder, input, textarea {
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+
+
+button:active {
+  opacity: 0.8;
+}
+
+/* Toggle Switch */
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 160px;
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+}
+
+.description {
+    margin-left: 1.25rem;
+  }
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 0.25rem;
+  content: "";
+  width: 26px;
+  height: 26px;
+  left: 0.25rem;
+  position: absolute;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--button-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#error, #success-msg {
+  width: 40vw;
+  margin: 0.125rem 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: 'Jost';
+  color: var(--secondary-color);
+  }
+
+
+  #success-msg {
+  transition-delay: 3s;
+  }
+
+@media only screen and (max-width: 950px) {
+  .logo {
+    width: 8rem;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  p {
+    font-size: 0.7rem;
+  }
+  input, textarea, button {
+    font-size: 0.65rem;
+  }
+  .description {
+    font-size: 0.3rem;
+    margin-left: 0.4rem;
+  }
+  button {
+    width: 7rem;
+  }
+  .theme-switch-wrapper {
+    width: 120px;
+  }
+  .theme-switch {
+  height: 28px;
+  width: 50px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 0.25rem;
+  content: "";
+  width: 20px;
+  height: 20px;
+  left: 0.25rem;
+  position: absolute;
+  transition: .4s;
+}
+  input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+.slider.round {
+  border-radius: 15px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+}
+  </style>
+  
+</body>
+</html>

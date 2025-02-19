@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Reviews</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <style>
+        *{
+            font-family: "Roboto", sans-serif;
+            font-weight: 300;
+
+        }
+        body {
+          
+
+          
+            margin: 0;
+            padding: 0;
+            color: #333;
+           background:#fff;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #000;
+        }
+        p {
+            text-align: center;
+            color: #000;
+        }
+        .owner-container {
+            width: 80%;
+            margin: 30px auto;
+        }
+        .owner-review {
+            /* background-color: rgba(0, 0, 0, 0.5); */
+            border: 2px solid #000;
+
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
+        }
+        .owner-review h2 {
+            text-align: center;
+            margin-top: 0;
+            color: #000;
+        }
+        .owner-review p {
+            color: #000;
+        }
+        .approve, .reject {
+            padding: 10px 30px;
+            font-size: 14px;
+            border: none;
+            width:20%;
+            margin-top: 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            /* margin-right: 10px;
+             */
+             margin-left:40%;
+        }
+        .approve {
+            background-color: rgba(0,0,0,0);
+            border:1px solid #4CAF50;
+            color: #4CAF50;
+        }
+        .approve:hover {
+            background-color: #45a049;
+            color:#fff;
+        }
+        .reject {
+            border:1px solid #e53935;
+            background-color: rgba(0,0,0,0);
+            color: #e53935;
+            margin-top: 20px;
+        }
+        .reject:hover {
+            background-color: #e53935;
+            color:#fff;
+        }
+        .btn {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            /* background-color: #2196F3;
+             */
+             background:white;
+             border:1px solid #2196F3;
+            color: #2196F3;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #1976D2;
+            color:#fff;
+        }
+        .owner-review p.approved {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Owner Dashboard</h1>
+    <p>Manage submitted reviews.</p>
+
+    <div class="owner-container">
+        <% reviews.forEach(review => { %>
+            <div class="owner-review">
+                <h2><%= review.username %></h2>
+                <p><%= review.content %></p>
+                <% if (!review.approved) { %>
+                    <form action="/approve/<%= review._id %>" method="POST">
+                        <button type="submit" class="approve">Approve</button>
+                    </form>
+                    <form action="/delete/<%= review._id %>" method="POST">
+                        <button type="submit" class="reject">Delete</button>
+                    </form>
+                <% } else { %>
+                    <p style="color: green;">✅ Approved</p>
+                <% } %>
+            </div>
+        <% }) %>
+    </div>
+
+    <a href="/" class="btn">Back to Home</a>
+</body>
+</html>

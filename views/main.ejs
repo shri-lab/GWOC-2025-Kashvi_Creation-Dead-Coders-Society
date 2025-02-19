@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashvi Creation </title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        section {
+    
+}
+
+        html{
+            scroll-behavior: smooth;
+
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+
+
+      
+           
+            /* color: #333; */
+            
+        }
+        .hero {
+            display: flex;
+            
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            height: 100vh; 
+            
+           
+            position: relative;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            
+            background: url('/images/Seasonal2.png') no-repeat center center/cover;
+          
+        }
+        .hero-content {
+            position: relative;
+            color: #fff;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 80px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 20px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background: transparent;
+            padding: 15px 0;
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            /* transition: background 0.3s ease-in-out; */
+        }
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .nav-links {
+            list-style: none;
+            margin-left: 6%;
+            display: flex;
+            padding: 0;
+        }
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .nav-links .active::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #c2a356;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+        }
+        .nav-links .active::after {
+            transform: scaleX(1);
+        }
+        .frame-container {
+            width: 100vw; /* Full width of the viewport */
+            height: 100vh;
+            
+            display: block;
+            border: none;
+        }
+        .buttons{
+            height:5vh;
+            width:25%;
+            /* background:red; */
+            position: relative;
+            top:-20vh;
+            left:40%;
+            
+
+        }
+        #shopNow{
+            width: 45%;
+            height:100%;
+            background:rgba(0, 0, 0, 0);
+            border:2px solid #c2a356;
+            color:#fff;
+            letter-spacing: 3px;
+            font-family:sans-serif;
+            border-radius: 20px;
+     
+
+
+        }
+        #Relative{
+            width:45%;
+            height:100%;
+            border:2px solid #fff;
+            color:#fff;
+            background:rgba(0, 0, 0, 0);
+            letter-spacing: 3px;
+            border-radius: 20px;
+            font-weight: 300;
+
+        }
+        #shopNow:hover{
+            background:#c2a356;
+            cursor: pointer;
+
+
+            
+        }
+        #Relative:hover{
+            background:#fff;
+            cursor: pointer;
+            font-weight: bold;
+            color:#333;
+
+            
+        }
+
+
+        .content-framing-final {
+    margin-top: -10vh; 
+}
+#content-frame-2 {
+    height: auto;
+    min-height: 40vh;
+    width: 100%;
+    position: relative;
+}
+.admin-btn {
+    position: absolute;
+    right: 2vh;
+    top: 10px;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.admin-btn:hover {
+    background: #fff;
+    color: #333;
+    
+}
+
+        @media (max-width: 768px) {
+           .hero{
+            background: url('/images/Seasonal2.png')  no-repeat center bottom/cover;
+            
+           }
+           .buttons{
+            align-items: center;
+            
+            
+           }
+           .hero::before {
+        background: rgba(0, 0, 0, 0.4); 
+    }
+            .hero h1 {
+                font-size: 50px;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+            .buttons{
+                width: 90%;
+                margin-left: -30%;
+            }
+            .content-framing-final {
+    padding-top: 30vh; 
+}
+
+        }
+    </style>
+    <script>document.addEventListener("DOMContentLoaded", function() {
+        const navbar = document.querySelector(".navbar");
+        const links = document.querySelectorAll(".nav-links a");
+        const frame = document.getElementById("content-frame");
+    
+        
+        const pages = {
+            "HOME": "/home-vid",
+            "ABOUT US": "/about",
+            "REVIEWS": "/reviews",       
+            "BLOG SPOT": "/blog",
+            "CONTACT US": "/contactUs"
+        };
+         frame.src = pages["ABOUT US"];
+
+    // Scroll event to detect when user scrolls past hero section
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > window.innerHeight * 0.5 && !userClicked) {
+            frame.src = pages["ABOUT US"];
+        }
+
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+    
+        
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    
+        links.forEach(link => {
+            link.addEventListener("click", function(event) {
+                event.preventDefault(); 
+                links.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+    
+                const page = pages[link.textContent.trim()];
+    
+                if (page === "%") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                } else if (page) {
+                    frame.classList.add("fade-out");
+    
+                    setTimeout(() => {
+                        frame.src = page;
+                        frame.onload = () => {
+                            frame.classList.remove("fade-out"); 
+                            
+                           
+                            setTimeout(() => {
+                                document.getElementById("content-framing-final").scrollIntoView({ behavior: "smooth" });
+                            }, 300);
+                        };
+                    }, 500); 
+                }
+            });
+        });
+    
+        links[0].classList.add("active");
+        frame.src = pages["HOME"];
+    });
+    
+
+    </script>
+</head>
+<body>
+    <section class="hero">
+      
+    </section>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a id="home-link" href="#">HOME</a></li>
+            <li><a href="#">ABOUT US</a></li>
+            <li><a href="#">CONTACT US</a></li>
+            <li><a href="#">REVIEWS</a></li>
+            <li><a href="#">BLOG SPOT</a></li>
+           
+       
+        </ul>
+        <a href="/admin" class="admin-btn">Admin</a>
+    </nav>
+    <div class="buttons">
+      <a href="/catalogue"> <button id = "shopNow">Shop Now</button></a> 
+        <a href="/cart"><button id = "Relative">Cart</button></a>
+       </div>
+    <div class="content-framing-final" id = "content-framing-final">
+    <iframe id="content-frame" class="frame-container" ></iframe>
+
+
+    
+    <style>
+        .frame-container-2{
+            width: 100%;
+            
+    height: 80vh; 
+    border: none; 
+    overflow: hidden;
+        }
+
+    </style>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Footer starts from here 
+  -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>CREO Fashion Studio</title>
+      <link rel="stylesheet" href="styles.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  
+      <style>
+          *{
+              font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    margin:0;
+    padding:0;
+    
+      
+          }
+          iframe {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+          .footer {
+              background: linear-gradient(#d4ac46, #c2a356);
+              /* background: #c2a356; */
+              padding: 20px;
+              height:40vh;
+              width: 100%;
+              text-align: center;
+              /* margin-top: 50px; */
+          }
+          .footer-container {
+              display: flex;
+              justify-content: space-between;
+              flex-wrap: wrap;
+              padding: 20px;
+              max-width: 1200px;
+              margin: auto;
+              
+          }
+          .footer-column {
+              flex: 1;
+              margin: 10px;
+              text-align: left;
+              text-align: center;
+              min-width: 250px;
+          }
+          .footer h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #fff;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+      font-weight: 300;
+  }
+  
+  .footer h3::after {
+      content: "";
+      display: block;
+      width: 50%;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      bottom: -5px; /* Moves the underline slightly lower */
+      left: 50%;
+      transform: translateX(-50%);
+  }
+          .footer a, .footer p {
+              color: #fff;
+              text-decoration: none;
+              display: block;
+              margin-bottom: 5px;
+              font-size: 14px;
+          }
+          .footer a:hover {
+              opacity: 0.7;
+          }
+          .social-icons a {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin-bottom: 8px; 
+}
+
+.social-icons img {
+    width: 20px;
+    height: 20px;
+}
+          .social-icons {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-left:10vh;
+      gap: 10px; 
+      margin-top: 10px; 
+  }
+  
+          #copyright{
+              color:rgb(225, 226, 227);
+          }
+  
+          /* Responsive Design */
+          @media (max-width: 768px) {
+              .footer-container {
+                  flex-direction: column;
+                  align-items: center;
+                  text-align: center;
+                  
+              }
+              .footer{
+                  height:100%;
+              }
+              .footer-column {
+                  width: 100%;
+                  text-align: center;
+                  
+              }
+              .social-icons {
+     
+      margin-left:40%;
+       
+      
+  }
+  
+          }
+      </style>
+  </head>
+  <body>
+      <footer class="footer">
+          <div class="footer-container">
+              <div class="footer-column">
+                  <h3>Find Us On</h3>
+                  <div class="social-icons">
+                      <a href="#"><img src="/images/facebook.png" alt="Facebook">  Facebook</a>
+                      <a href="#"><img src="/images/instagram.png" alt="Instagram">Instagram</a>
+                      <a href="#"><img src="/images/pinterest.png" alt="Pinterest">Pinterest</a>
+                      <a href="#"><img src="/images/youtube.png" alt="YouTube">YouTube</a>
+                  </div>
+              </div>
+              <div class="footer-column">
+                  <h3>About Us</h3>
+                  <a href="#">Know Us</a>
+                  <a href="#">Workshop</a>
+                  <a href="#">Gift Cards</a>
+                  <a href="#">Enquiry</a>
+                  <a href="#">Awards</a>
+              </div>
+              <div class="footer-column">
+                  <h3>Our Policies</h3>
+                  <a href="/faq">FAQ</a>
+                  <a href="/terms">Shipping</a>
+                  <a href="/terms">Safe Purchase</a>
+                  <a href="/terms">Terms & Conditions</a>
+                  <a href="/terms">Privacy Policy</a>
+              </div>
+              <div class="footer-column">
+                  <h3>Connect</h3>
+                  <p>Email: kashvicreation10@gmail.com </p>
+                  <p>Phone: +91 9376421333</p>
+                  <p>WhatsApp: +91 7290909696</p>
+              </div>
+          </div>
+          <p id  = "copyright">&copy; 2025 All Rights Reserved by Kashvi Creation.</p>
+      </footer>
+  </body>
+  </html>
+<!-- footer ends from here    -->
