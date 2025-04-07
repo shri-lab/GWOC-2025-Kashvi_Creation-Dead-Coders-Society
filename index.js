@@ -31,7 +31,8 @@ app.use(
 );
 
 // ✅ MongoDB Connection (Single Connection)
-const mongoURI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/reviewDB";
+// const mongoURI = process.env.MONGO_URI;
+const mongoURI = 'mongodb+srv://goofyjock:spxr1UKkEq2DYUH2@cluster0.crmb2.mongodb.net/';
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
@@ -207,13 +208,33 @@ app.post("/cart/remove/:id", (req, res) => {
 
 // ✅ Handle Product Upload (POST)
 app.post("/upload", upload.single("image"), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+
+
+  const storage = multer.diskStorage({
+    destination: "./public/uploads/", // Store image in 'uploads' directory
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    },
+  });
+  
+  const upload = multer({ storage });
+  
+  
+  
+  
+  const imagePath = `/uploads/${req.file.filename}`; // Path to store in DB
+
   const newProduct = new Product({
     name: req.body.name,
     details: req.body.details,
     category: req.body.category,
-    image: req.file ? `/uploads/${req.file.filename}` : "",
+    image: imagePath, // Store image path in MongoDB
     price: req.body.price,
   });
+
   await newProduct.save();
   res.redirect("/catalogue");
 });
